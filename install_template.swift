@@ -95,7 +95,7 @@ func installTemplate(_ templateName: String) {
 
 /// Bash Shell Command
 func bash(command: String, arguments: [String]) -> String {
-  let commandPath = shell(launchPath: "/bin/bash", arguments: ["-l", "-c", "which \(command)" ])
+  let commandPath = shell(launchPath: "/bin/bash", arguments: ["-c", "which \(command)" ])
   return shell(launchPath: commandPath, arguments: arguments)
 }
 
