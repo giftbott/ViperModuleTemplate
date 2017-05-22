@@ -19,7 +19,7 @@
 	<key>MainTemplateFile</key>
 	<string>___FILEBASENAME___</string>
 	<key>SortOrder</key>
-	<integer>1</integer>
+	<integer>90</integer>
 	<key>Options</key>
 	<array>
 		<dict>

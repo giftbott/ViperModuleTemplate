@@ -60,11 +60,16 @@ func setup() {
 /// Copy template
 func installTemplate(_ templateName: String) {
   let pathEndPoint = "/Library/Developer/Xcode/Templates/File Templates/Custom"
-  let directoryPath = "/Users/".appending(bash(command: "whoami", arguments: [])).appending(pathEndPoint)
+  var directoryPath = "/Users/".appending(bash(command: "whoami", arguments: [])).appending(pathEndPoint)
 
   //Uncomment this if you want to add your template to Xcode system templates, then your templates will be shown at Topside
   //Info : 1. This needs admin authority  2. Change directoryPath (let -> var)
+  //
+  //Project Templates
   //directoryPath = "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/Project Templates/iOS/Application"
+  //
+  //File Templates
+  directoryPath = "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/File Templates/Source"
 
   let filePath = directoryPath.appending("/\(templateName)")
 
