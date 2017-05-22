@@ -13,10 +13,10 @@ class ___FILEBASENAMEASIDENTIFIER___Wireframe: ___FILEBASENAMEASIDENTIFIER___Wir
     
   static func create___FILEBASENAMEASIDENTIFIER___Module() -> UIViewController {
     let view = ___FILEBASENAMEASIDENTIFIER___View()
-    let wireframe: ___FILEBASENAMEASIDENTIFIER___WireframeProtocol = ___FILEBASENAMEASIDENTIFIER___Wireframe()
-    let presenter: ___FILEBASENAMEASIDENTIFIER___PresenterProtocol & ___FILEBASENAMEASIDENTIFIER___InteractorOutputProtocol = ___FILEBASENAMEASIDENTIFIER___Presenter()
-    let interactor: ___FILEBASENAMEASIDENTIFIER___InteractorInputProtocol & ___FILEBASENAMEASIDENTIFIER___DataManagerOutputProtocol = ___FILEBASENAMEASIDENTIFIER___Interactor()
-    let dataManager: ___FILEBASENAMEASIDENTIFIER___DataManagerInputProtocol = ___FILEBASENAMEASIDENTIFIER___DataManager()
+    let wireframe = ___FILEBASENAMEASIDENTIFIER___Wireframe()
+    let presenter = ___FILEBASENAMEASIDENTIFIER___Presenter()
+    let interactor = ___FILEBASENAMEASIDENTIFIER___Interactor()
+    let dataManager = ___FILEBASENAMEASIDENTIFIER___DataManager()
         
     view.presenter = presenter
     presenter.view = view
