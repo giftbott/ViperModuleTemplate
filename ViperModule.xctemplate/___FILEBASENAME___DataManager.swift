@@ -9,6 +9,6 @@
 import Foundation
 
 class ___FILEBASENAMEASIDENTIFIER___DataManager: ___FILEBASENAMEASIDENTIFIER___DataManagerInputProtocol {
-  weak var dataHandler: ___FILEBASENAMEASIDENTIFIER___DataManagerOutputProtocol?
+  weak var requestHandler: ___FILEBASENAMEASIDENTIFIER___DataManagerOutputProtocol?
 
 }

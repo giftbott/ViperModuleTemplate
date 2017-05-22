@@ -17,7 +17,7 @@ protocol ___FILEBASENAMEASIDENTIFIER___ViewProtocol: class {
 
 //MARK: Wireframe
 protocol ___FILEBASENAMEASIDENTIFIER___WireframeProtocol: class {
-  static func createModule() -> UIViewController
+  static func create___FILEBASENAMEASIDENTIFIER___Module() -> UIViewController
 
   // Presenter -> Wireframe
 }
@@ -46,7 +46,7 @@ protocol ___FILEBASENAMEASIDENTIFIER___InteractorInputProtocol: class {
 
 //MARK: DataManager
 protocol ___FILEBASENAMEASIDENTIFIER___DataManagerInputProtocol: class {
-  var dataHandler: ___FILEBASENAMEASIDENTIFIER___DataManagerOutputProtocol? { get set } 
+  var requestHandler: ___FILEBASENAMEASIDENTIFIER___DataManagerOutputProtocol? { get set } 
 
   // INTERACTOR -> DATAMANAGER
 }
