@@ -12,7 +12,7 @@ class ___FILEBASENAMEASIDENTIFIER___Wireframe: ___FILEBASENAMEASIDENTIFIER___Wir
   weak var view: UIViewController?
     
   static func create___FILEBASENAMEASIDENTIFIER___Module() -> UIViewController {
-    let view = ___FILEBASENAMEASIDENTIFIER___View()
+    let view = ___FILEBASENAMEASIDENTIFIER___ViewController()
     let wireframe = ___FILEBASENAMEASIDENTIFIER___Wireframe()
     let presenter = ___FILEBASENAMEASIDENTIFIER___Presenter()
     let interactor = ___FILEBASENAMEASIDENTIFIER___Interactor()
