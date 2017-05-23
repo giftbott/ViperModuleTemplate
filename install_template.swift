@@ -14,7 +14,7 @@ import Foundation
 
 let fileManager = FileManager.default
 
-/// Select template
+/// Select Template, only if more than one template
 func setup() {
   let contentsFilter = try? fileManager
     .contentsOfDirectory(atPath: ".")
@@ -31,10 +31,10 @@ func setup() {
   }
   
   /// Show xctemplates in current directory
+  print("Select Template")
   print(String(repeating: "#", count:30))
-  let _ = templates.enumerated().map { print("\($0): \($1)") }
+  print(templates.enumerated().map { String(describing: "\($0): \($1)") }.joined(separator: "\n"))
   print(String(repeating: "#", count:30), terminator: "\n\n")
-  
   
   /// User select xctemplate
   var templateName: String = templates[0]
@@ -49,27 +49,82 @@ func setup() {
     
     templateName = templates[num]
     printInConsole("\(templateName) is selected")
+    print()
     break
   }
 
-  /// Copy template!
+  
   installTemplate(templateName)
 }
 
 
 /// Copy template
 func installTemplate(_ templateName: String) {
-  let pathEndPoint = "/Library/Developer/Xcode/Templates/File Templates/Custom"
-  var directoryPath = "/Users/".appending(bash(command: "whoami", arguments: [])).appending(pathEndPoint)
 
-  //Uncomment this if you want to add your template to Xcode system templates, then your templates will be shown at Topside
-  //Info : 1. This needs admin authority  2. Change directoryPath (let -> var)
-  //
-  //Project Templates
-  //directoryPath = "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/Project Templates/iOS/Application"
-  //
-  //File Templates
-  directoryPath = "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/File Templates/Source"
+  // Print Target Directory Path
+  print("Select Directory Path to Install Template")
+  print(String(repeating: "#", count:40))
+  print("0: Custom File Template")
+  print("1: Custom Project Template")
+  print("2: Xcode File Template (admin only)")
+  print("3: Xcode Project Template (admin only)")
+  print(String(repeating: "#", count:40), terminator: "\n\n")
+
+
+  // Select Target
+  let customTemplatePath = "/Users/".appending(bash(command: "whoami", arguments: []))
+  let XcodeTemplatePath = bash(command: "xcode-select", arguments: ["--print-path"])
+
+  // Default Path
+  var directoryPath = customTemplatePath
+  var pathEndPoint = "/Library/Developer/Xcode/Templates/File Templates/Custom"
+
+  while true {
+    print("Select Target Path Number : ", terminator: "")
+    let input = readLine() ?? "0"
+    guard let num = Int(input), num >= 0, num < 4 else {
+      print("Wrong Value\n")
+      continue
+    }
+
+    switch num {
+    case 0:
+      if isRootUserWithSudoCommand(selectNumber: 0) {
+        print("CustomTemplate must be executed without sudo command")
+        return
+      }
+      break
+    case 1:
+      if isRootUserWithSudoCommand(selectNumber: 1) {
+        print("CustomTemplate must be executed without sudo command")
+        return
+      }
+      pathEndPoint = "/Library/Developer/Xcode/Templates/Project Templates/Custom"
+      directoryPath = customTemplatePath
+    case 2:
+      if !isRootUserWithSudoCommand(selectNumber: 2) {
+        print("XcodeTemplatePath need to be executed with sudo command")
+        return
+      }
+      pathEndPoint = "/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/File Templates/Source"
+      directoryPath = XcodeTemplatePath
+    case 3:
+      if !isRootUserWithSudoCommand(selectNumber: 3) {
+        print("XcodeTemplatePath need to be executed with sudo command")
+        return
+      }
+      pathEndPoint = "/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/Project Templates/iOS/Application"
+      directoryPath = XcodeTemplatePath
+    default:
+      break
+    }
+
+    directoryPath.append(pathEndPoint)
+
+    printInConsole("Template will be installed at \(directoryPath)")
+    break
+  }
+
 
   let filePath = directoryPath.appending("/\(templateName)")
 
@@ -119,6 +174,9 @@ func shell(launchPath: String, arguments: [String]) -> String {
   return output.trimmingCharacters(in: .newlines)
 }
 
+func isRootUserWithSudoCommand(selectNumber: Int) -> Bool {
+  return bash(command: "whoami", arguments: []) == "root"
+}
 
 /// Print Helper
 func printInConsole(_ message: String) {
