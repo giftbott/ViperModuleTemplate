@@ -9,9 +9,15 @@
 import Foundation
 
 class ___FILEBASENAMEASIDENTIFIER___Presenter: ___FILEBASENAMEASIDENTIFIER___PresenterProtocol {
+  // Default
   weak var view: ___FILEBASENAMEASIDENTIFIER___ViewProtocol?
-  var wireframe: ___FILEBASENAMEASIDENTIFIER___WireframeProtocol?
+  let wireframe: ___FILEBASENAMEASIDENTIFIER___WireframeProtocol
 
-  func viewDidLoad() {
+  init(wireframe: ___FILEBASENAMEASIDENTIFIER___WireframeProtocol) {
+      self.wireframe = wireframe
+  }
+
+  //
+  func onViewDidLoad() {
   }
 }

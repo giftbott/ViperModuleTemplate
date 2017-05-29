@@ -10,26 +10,21 @@ import UIKit
 
 //MARK: View
 protocol ___FILEBASENAMEASIDENTIFIER___ViewProtocol: class {
-  var presenter: ___FILEBASENAMEASIDENTIFIER___PresenterProtocol?  { get set }
 
   // Presenter -> View
 }
 
 //MARK: Wireframe
 protocol ___FILEBASENAMEASIDENTIFIER___WireframeProtocol: class {
-  static func create___FILEBASENAMEASIDENTIFIER___Module() -> UIViewController
-
+ 
   // Presenter -> Wireframe
 }
 
 //MARK: Presenter
 protocol ___FILEBASENAMEASIDENTIFIER___PresenterProtocol: class {
-  var view: ___FILEBASENAMEASIDENTIFIER___ViewProtocol? { get set }
-  var interactor: ___FILEBASENAMEASIDENTIFIER___InteractorInputProtocol? { get set }
-  var wireframe: ___FILEBASENAMEASIDENTIFIER___WireframeProtocol? { get set }
-  
+
   // View -> Presenter
-  func viewDidLoad()
+  func onViewDidLoad()
 }
 
 //MARK: Interactor
@@ -38,15 +33,12 @@ protocol ___FILEBASENAMEASIDENTIFIER___InteractorOutputProtocol: class {
 }
 
 protocol ___FILEBASENAMEASIDENTIFIER___InteractorInputProtocol: class {
-  var presenter: ___FILEBASENAMEASIDENTIFIER___InteractorOutputProtocol?  { get set }
-  var dataManager: ___FILEBASENAMEASIDENTIFIER___DataManagerInputProtocol? { get set }
 
   // Presenter -> Interactor
 }
 
 //MARK: DataManager
 protocol ___FILEBASENAMEASIDENTIFIER___DataManagerInputProtocol: class {
-  var requestHandler: ___FILEBASENAMEASIDENTIFIER___DataManagerOutputProtocol? { get set } 
 
   // INTERACTOR -> DATAMANAGER
 }

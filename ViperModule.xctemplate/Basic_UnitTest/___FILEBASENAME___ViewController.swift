@@ -9,10 +9,23 @@
 import UIKit
 
 class ___FILEBASENAMEASIDENTIFIER___ViewController: UIViewController {
-  var presenter: ___FILEBASENAMEASIDENTIFIER___PresenterProtocol?
+  // Default
+  let presenter: ___FILEBASENAMEASIDENTIFIER___PresenterProtocol
 
+  init(presenter: ___FILEBASENAMEASIDENTIFIER___PresenterProtocol) {
+    self.presenter = presenter
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  
+  // View LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    presenter.onViewDidLoad()
   }
 }
 

@@ -8,10 +8,20 @@
 
 import Foundation
 
-class ___FILEBASENAMEASIDENTIFIER___Interactor: ___FILEBASENAMEASIDENTIFIER___InteractorInputProtocol {
+class ___FILEBASENAMEASIDENTIFIER___Interactor {
+  // Default
   weak var presenter: ___FILEBASENAMEASIDENTIFIER___InteractorOutputProtocol?
-  var dataManager: ___FILEBASENAMEASIDENTIFIER___DataManagerInputProtocol?
+  let dataManager: ___FILEBASENAMEASIDENTIFIER___DataManagerInputProtocol
 
+  init(dataManager: LocalVideoDataManagerInputProtocol) {
+    self.dataManager = dataManager
+  }
+
+  //
+}
+
+extension ___FILEBASENAMEASIDENTIFIER___Interactor: ___FILEBASENAMEASIDENTIFIER___InteractorInputProtocol {
+	
 }
 
 extension ___FILEBASENAMEASIDENTIFIER___Interactor: ___FILEBASENAMEASIDENTIFIER___DataManagerOutputProtocol {

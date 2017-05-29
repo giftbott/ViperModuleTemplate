@@ -13,9 +13,6 @@ import Nimble
 
 class ___FILEBASENAMEASIDENTIFIER___InteractorTests: QuickSpec {
   override func spec() {
-    describe(<#Describe#>) {
-      it(<#Tests#>) {
-      }
-    }
+
   }
 }

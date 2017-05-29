@@ -10,23 +10,19 @@ import UIKit
 
 //MARK: View
 protocol ___FILEBASENAMEASIDENTIFIER___ViewProtocol: class {
-  var presenter: ___FILEBASENAMEASIDENTIFIER___PresenterProtocol?  { get set }
 
   // Presenter -> View
 }
 
 //MARK: Wireframe
 protocol ___FILEBASENAMEASIDENTIFIER___WireframeProtocol: class {
-  static func create___FILEBASENAMEASIDENTIFIER___Module() -> UIViewController
 
   // Presenter -> Wireframe
 }
 
 //MARK: Presenter
 protocol ___FILEBASENAMEASIDENTIFIER___PresenterProtocol: class {
-  var view: ___FILEBASENAMEASIDENTIFIER___ViewProtocol? { get set }
-  var wireframe: ___FILEBASENAMEASIDENTIFIER___WireframeProtocol? { get set }
   
   // View -> Presenter
-  func viewDidLoad()
+  func onViewDidLoad()
 }

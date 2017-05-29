@@ -11,16 +11,13 @@ import UIKit
 class ___FILEBASENAMEASIDENTIFIER___Wireframe: ___FILEBASENAMEASIDENTIFIER___WireframeProtocol {
   weak var view: UIViewController?
     
-  static func create___FILEBASENAMEASIDENTIFIER___Module() -> UIViewController {
-    let view = ___FILEBASENAMEASIDENTIFIER___ViewController()
+  static func createModule() -> UIViewController {
     let wireframe = ___FILEBASENAMEASIDENTIFIER___Wireframe()
-    let presenter = ___FILEBASENAMEASIDENTIFIER___Presenter()
     let interactor = ___FILEBASENAMEASIDENTIFIER___Interactor()
+    let presenter = ___FILEBASENAMEASIDENTIFIER___Presenter(wireframe: wireframe, interactor: interactor)
+    let view = ___FILEBASENAMEASIDENTIFIER___ViewController(presenter: presenter)
         
-    view.presenter = presenter
     presenter.view = view
-    presenter.wireframe = wireframe
-    presenter.interactor = interactor
     interactor.presenter = presenter
         
     return view
