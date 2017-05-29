@@ -14,11 +14,13 @@ protocol ___FILEBASENAMEASIDENTIFIER___ViewProtocol: class {
   // Presenter -> View
 }
 
+
 //MARK: Wireframe
 protocol ___FILEBASENAMEASIDENTIFIER___WireframeProtocol: class {
 
   // Presenter -> Wireframe
 }
+
 
 //MARK: Presenter
 protocol ___FILEBASENAMEASIDENTIFIER___PresenterProtocol: class {

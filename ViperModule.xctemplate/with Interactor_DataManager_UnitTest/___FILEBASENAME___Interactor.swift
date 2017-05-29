@@ -13,7 +13,7 @@ class ___FILEBASENAMEASIDENTIFIER___Interactor {
   weak var presenter: ___FILEBASENAMEASIDENTIFIER___InteractorOutputProtocol?
   let dataManager: ___FILEBASENAMEASIDENTIFIER___DataManagerInputProtocol
 
-  init(dataManager: LocalVideoDataManagerInputProtocol) {
+  init(dataManager: ___FILEBASENAMEASIDENTIFIER___DataManagerInputProtocol) {
     self.dataManager = dataManager
   }
 

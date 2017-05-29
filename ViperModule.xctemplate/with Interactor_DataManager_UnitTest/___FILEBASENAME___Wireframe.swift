@@ -13,7 +13,7 @@ class ___FILEBASENAMEASIDENTIFIER___Wireframe: ___FILEBASENAMEASIDENTIFIER___Wir
     
   static func createModule() -> UIViewController {
     let wireframe = ___FILEBASENAMEASIDENTIFIER___Wireframe()
-    let dataManager = ___FILEBASENAMEASIDENTIFIER___dataManager()
+    let dataManager = ___FILEBASENAMEASIDENTIFIER___DataManager()
     let interactor = ___FILEBASENAMEASIDENTIFIER___Interactor(dataManager: dataManager)
     let presenter = ___FILEBASENAMEASIDENTIFIER___Presenter(wireframe: wireframe, interactor: interactor)
     let view = ___FILEBASENAMEASIDENTIFIER___ViewController(presenter: presenter)
