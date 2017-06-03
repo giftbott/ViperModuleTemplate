@@ -35,16 +35,16 @@
 			<true/>
 			<key>Type</key>
 			<string>text</string>
-            <key>Placeholder</key>
-            <string>Input Module Name</string>
+			<key>Placeholder</key>
+			<string>Input Module Name</string>
 		</dict>
-        <dict>
-            <key>Identifier</key>
-            <string>moduleType</string>
-            <key>Name</key>
-            <string>Module Type</string>
+		<dict>
 			<key>Description</key>
 			<string>Viper module type</string>
+			<key>Identifier</key>
+			<string>moduleType</string>
+			<key>Name</key>
+			<string>Module Type</string>
 			<key>Type</key>
 			<string>popup</string>
 			<key>Values</key>
@@ -101,7 +101,7 @@
 	</array>
 	<key>Template Author</key>
 	<string>giftbott</string>
-    <key>Summary</key>
-    <string>This generates a new module using Viper architecture.</string>
+	<key>Summary</key>
+	<string>This generates a new module using Viper architecture.</string>
 </dict>
 </plist>
