@@ -61,9 +61,7 @@ func installTemplate(_ templateName: String) {
   print("Select Directory Path to Install Template")
   print(String(repeating: "#", count:40))
   print("1: Custom File Template")
-  print("2: Custom Project Template")
-  print("3: Xcode File Template (admin only)")
-  print("4: Xcode Project Template (admin only)")
+  print("2: Xcode File Template (admin only)")
   print(String(repeating: "#", count:40), terminator: "\n\n")
   
   
@@ -78,7 +76,7 @@ func installTemplate(_ templateName: String) {
   while true {
     print("Select Target Path Number : ", terminator: "")
     let input = readLine() ?? "1"
-    guard let num = Int(input), num >= 1, num <= 4 else {
+    guard let num = Int(input), num >= 1, num <= 2 else {
       print("Wrong Value\n")
       continue
     }
@@ -90,26 +88,12 @@ func installTemplate(_ templateName: String) {
         return
       }
     case 2:
-      guard !isRootUserWithSudoCommand() else {
-        authorityAlert(needSudo: false)
-        return
-      }
-      directoryPath = userHomeDirectory
-      pathEndPoint = PathEndPoint.customProjectTemplate.rawValue
-    case 3:
       guard isRootUserWithSudoCommand() else {
         authorityAlert(needSudo: true)
         return
       }
       directoryPath = xcodeBasePath
       pathEndPoint = PathEndPoint.xcodeFileTemplate.rawValue
-    case 4:
-      guard isRootUserWithSudoCommand() else {
-        authorityAlert(needSudo: true)
-        return
-      }
-      directoryPath = xcodeBasePath
-      pathEndPoint = PathEndPoint.xcodeProjectTemplate.rawValue
     default:
       break
     }
@@ -191,47 +175,12 @@ func authorityAlert(needSudo: Bool) {
   }
 }
 
-func argumentsAlert() {
-  print("Illegal option.")
-  print("usage : swift install_template.swift [-g file / -g project]\n")
-}
-
-
-/// Copy from Xcode Template (File: Swift, Project: Single View)
-func getBaseTemplate(type: TemplateType) {
-  let xcodeBasePath = bash(command: "xcode-select", arguments: ["--print-path"])
-  switch type {
-  case .file:
-    printInConsole("Copying File Template")
-    let originPath = xcodeBasePath + "/Library/Xcode/Templates/File Templates/Source/"
-    let templateName = "Swift File.xctemplate"
-    let newPath = "./BaseFileTemplate.xctemplate"
-    copyTemplate(from: originPath + templateName, to: newPath)
-  case .project:
-    printInConsole("Copying Project Template")
-    let originPath = xcodeBasePath + "/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/Project Templates/iOS/Application/"
-    let templateName = "Single View Application.xctemplate"
-    let newPath = "./BaseProjectTemplate.xctemplate"
-    copyTemplate(from: originPath + templateName, to: newPath)
-  }
-}
-
-
-enum TemplateType {
-  case file
-  case project
-}
-
-/// Template Target Path
+/// Target Url
 enum PathEndPoint: String {
   case customFileTemplate = "/Library/Developer/Xcode/Templates/File Templates/Custom"
-  case customProjectTemplate = "/Library/Developer/Xcode/Templates/Project Templates/Custom"
-  
-  //iOS Platform Path
+  //iOS Platform
   case xcodeFileTemplate = "/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/File Templates/Source"
-  case xcodeProjectTemplate = "/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/Project Templates/iOS/Application"
 }
-
 
 
 //===============
