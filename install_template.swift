@@ -237,33 +237,4 @@ enum PathEndPoint: String {
 //===============
 //MARK: - Execute
 //===============
-let arguments = CommandLine.arguments
-
-switch CommandLine.argc {
-case 1:
-  setup()
-case 3:
-  let type = arguments[2]
-  
-  guard
-    arguments[1] == "-g",
-    (type == "file" || type == "project")
-  else {
-    argumentsAlert()
-    break
-  }
-
-  guard isRootUserWithSudoCommand() else {
-    authorityAlert(needSudo: true)
-    break
-  }
-  
-  if type == "file" {
-    getBaseTemplate(type: .file)
-  }
-  else if type == "project" {
-    getBaseTemplate(type: .project)
-  }
-default:
-  argumentsAlert()
-}
+setup()
