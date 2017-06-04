@@ -30,7 +30,7 @@ func setup() {
   /// Show xctemplates in current directory
   print("Select Template")
   print(String(repeating: "#", count:30))
-  print(templates.enumerated().map { String(describing: "\($0): \($1)") }.joined(separator: "\n"))
+  print(templates.enumerated().map { String(describing: "\($0 + 1): \($1)") }.joined(separator: "\n"))
   print(String(repeating: "#", count:30), terminator: "\n\n")
   
   /// User select xctemplate
@@ -38,13 +38,13 @@ func setup() {
   
   while true {
     print("Select template number : ", terminator: "")
-    let input = readLine() ?? "0"
-    guard let num = Int(input), num >= 0, num < templates.count else {
+    let input = readLine() ?? "1"
+    guard let num = Int(input), num >= 1, num <= templates.count else {
       print("Wrong Value\n")
       continue
     }
     
-    templateName = templates[num]
+    templateName = templates[num-1]
     printInConsole("\(templateName) is selected")
     print()
     break
@@ -60,10 +60,10 @@ func installTemplate(_ templateName: String) {
   // Print Target Directory Path
   print("Select Directory Path to Install Template")
   print(String(repeating: "#", count:40))
-  print("0: Custom File Template")
-  print("1: Custom Project Template")
-  print("2: Xcode File Template (admin only)")
-  print("3: Xcode Project Template (admin only)")
+  print("1: Custom File Template")
+  print("2: Custom Project Template")
+  print("3: Xcode File Template (admin only)")
+  print("4: Xcode Project Template (admin only)")
   print(String(repeating: "#", count:40), terminator: "\n\n")
   
   
@@ -77,33 +77,33 @@ func installTemplate(_ templateName: String) {
   
   while true {
     print("Select Target Path Number : ", terminator: "")
-    let input = readLine() ?? "0"
-    guard let num = Int(input), num >= 0, num < 4 else {
+    let input = readLine() ?? "1"
+    guard let num = Int(input), num >= 1, num <= 4 else {
       print("Wrong Value\n")
       continue
     }
     
     switch num {
-    case 0:
+    case 1:
       guard !isRootUserWithSudoCommand() else {
         authorityAlert(needSudo: false)
         return
       }
-    case 1:
+    case 2:
       guard !isRootUserWithSudoCommand() else {
         authorityAlert(needSudo: false)
         return
       }
       directoryPath = userHomeDirectory
       pathEndPoint = PathEndPoint.customProjectTemplate.rawValue
-    case 2:
+    case 3:
       guard isRootUserWithSudoCommand() else {
         authorityAlert(needSudo: true)
         return
       }
       directoryPath = xcodeBasePath
       pathEndPoint = PathEndPoint.xcodeFileTemplate.rawValue
-    case 3:
+    case 4:
       guard isRootUserWithSudoCommand() else {
         authorityAlert(needSudo: true)
         return
@@ -185,10 +185,15 @@ func printInConsole(_ message: String) {
 
 func authorityAlert(needSudo: Bool) {
   if needSudo {
-    print("It needs to be executed with sudo command")
+    print("It needs to be executed with sudo command\n")
   } else {
-    print("CustomTemplate must be executed without sudo command")
+    print("CustomTemplate must be executed without sudo command\n")
   }
+}
+
+func argumentsAlert() {
+  print("Illegal option.")
+  print("usage : swift install_template.swift [-g file / -g project]\n")
 }
 
 
@@ -237,25 +242,28 @@ let arguments = CommandLine.arguments
 switch CommandLine.argc {
 case 1:
   setup()
-case 2:
-  if arguments[1] == "-getfile" {
-    guard isRootUserWithSudoCommand() else {
-      authorityAlert(needSudo: true)
-      break
-    }
+case 3:
+  let type = arguments[2]
+  
+  guard
+    arguments[1] == "-g",
+    (type == "file" || type == "project")
+  else {
+    argumentsAlert()
+    break
+  }
+
+  guard isRootUserWithSudoCommand() else {
+    authorityAlert(needSudo: true)
+    break
+  }
+  
+  if type == "file" {
     getBaseTemplate(type: .file)
   }
-  else if arguments[1] == "-getproject" {
-    guard isRootUserWithSudoCommand() else {
-      authorityAlert(needSudo: true)
-      break
-    }
+  else if type == "project" {
     getBaseTemplate(type: .project)
   }
-  else {
-    print("Illegal option")
-    print("usage : swift install_template.swift [-getfile / -getproject]")
-  }
 default:
-  print("Illegal option. Only one option available at a time ")
+  argumentsAlert()
 }
