@@ -5,8 +5,8 @@
 Viper architecture module generator using Xcode template with ease.
 
 - [How to install](#how-to-install)
-- [Using Script](#1-using-script-recommend)
-- [Manual](#2-manual)
+  - [Using Script](#1-using-script-recommend)
+  - [Manual](#2-manual)
 - [Usage](#usage)
 
 
