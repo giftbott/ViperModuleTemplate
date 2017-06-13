@@ -6,7 +6,6 @@
 //  Copyright © 2017 giftbott. All rights reserved.
 //
 
-
 import Foundation
 
 let fileManager = FileManager.default
@@ -17,7 +16,7 @@ func setup() {
     .contentsOfDirectory(atPath: ".")
     .filter { $0.hasSuffix(".xctemplate") }
   
-  guard let templates = templateChecker, templates.count > 0 else {
+  guard let templates = templateChecker, !templates.isEmpty else {
     printInConsole("xctemplate directory does not exist")
     return
   }
@@ -44,7 +43,7 @@ func setup() {
       continue
     }
     
-    templateName = templates[num-1]
+    templateName = templates[num - 1]
     printInConsole("\(templateName) is selected")
     print()
     break
@@ -53,18 +52,15 @@ func setup() {
   installTemplate(templateName)
 }
 
-
 /// Copy template to selected target path
 func installTemplate(_ templateName: String) {
-  
   // Print Target Directory Path
   print("Select Directory Path to Install Template")
   print(String(repeating: "#", count:40))
   print("1: Custom File Template")
   print("2: Xcode File Template (admin only)")
   print(String(repeating: "#", count:40), terminator: "\n\n")
-  
-  
+
   // Select Target Base Path
   let userHomeDirectory = "/Users/".appending(bash(command: "whoami", arguments: []))
   let xcodeBasePath = bash(command: "xcode-select", arguments: ["--print-path"])
@@ -80,7 +76,7 @@ func installTemplate(_ templateName: String) {
       print("Wrong Value\n")
       continue
     }
-    
+
     switch num {
     case 1:
       guard !isRootUserWithSudoCommand() else {
@@ -104,38 +100,32 @@ func installTemplate(_ templateName: String) {
     break
   }
   
-  
   let filePath = directoryPath.appending("/\(templateName)")
-  let _ = bash(command: "mkdir", arguments: ["-p", directoryPath])
+  _ = bash(command: "mkdir", arguments: ["-p", directoryPath])
   
   copyTemplate(from: templateName, to: filePath)
 }
 
-
-///
+/// 
 func copyTemplate(from: String, to: String) {
   do {
     printInConsole(".....")
     defer { print() }
     
-    if !fileManager.fileExists(atPath: to){
+    if !fileManager.fileExists(atPath: to) {
       try fileManager.copyItem(atPath: from, toPath: to)
       
       printInConsole("Template installed succesfully.")
-      
-    }
-    else{
+    } else {
       try _ = fileManager.removeItem(atPath: to)
       try fileManager.copyItem(atPath: from, toPath: to)
       
       printInConsole("Template has been replaced succesfully.")
     }
-  }
-  catch let error as NSError {
+  } catch let error as NSError {
     printInConsole("Ooops! Something went wrong: \(error.localizedFailureReason!)")
   }
 }
-
 
 /// Bash Shell Command
 func bash(command: String, arguments: [String]) -> String {
@@ -182,8 +172,7 @@ enum PathEndPoint: String {
   case xcodeFileTemplate = "/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/File Templates/Source"
 }
 
-
-//===============
-//MARK: - Execute
-//===============
+// ===============
+// MARK: - Execute
+// ===============
 setup()
