@@ -63,4 +63,4 @@ Issues, Pull Requests and adding your custom template are welcome.
 
 ### License
 
-**Xcode Template Helper** is under the MIT license. See [LICENSE](LICENSE) for details.
+**Viper Module Template** is under the MIT license. See [LICENSE](LICENSE) for details.
