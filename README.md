@@ -14,6 +14,7 @@ Viper architecture module generator using Xcode template with ease.
 
 ### 1. Using script (strongly recommend)
 
+&nbsp;&nbsp;&nbsp;
 Just execute this command in terminal 
 
 - to install in `User Custom Path`
@@ -27,7 +28,7 @@ sudo swift install_template.swift
 ```
 
 - ##### ScreenShot
-  ![install via script](assets/install_script.png)
+![install via script](assets/install_script.png)
 
 
 ### 2. Manual
@@ -37,7 +38,7 @@ sudo swift install_template.swift
 mkdir -p $HOME"/Library/Developer/Xcode/Templates/File Templates/Custom/ViperModule.xctemplate/" && \
 cp -R ./ViperModule.xctemplate $HOME"/Library/Developer/Xcode/Templates/File Templates/Custom/"
 ```
-** Copy & Paste above commands ** 
+copy & paste<br>
 or copy `ViperModule.xctemplate` manually to `$HOME"/Library/Developer/Xcode/Templates/File Templates/Custom"` Directory (File Templates/Custom directory may not exist. It's default)
 
 - to install in `Xcode Application Path` 
@@ -46,16 +47,20 @@ tempDir=`xcode-select -p`"/Platforms/iPhoneOS.platform/Developer/Library/Xcode/T
 sudo mkdir -p $tempDir/ViperModule.xctemplate/ && \
 sudo cp -R ./ViperModule.xctemplate $tempDir
 ```
-or 
-Go to Application directory, select 'Show Package Contents' menu of Xcode application icon. Then browse to: `"/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/File Templates/Source/"`. and add `ViperModule.xctemplate` to the directory.
+or<br>
+Go to Application directory, select 'Show Package Contents' menu of Xcode application icon. Then browse to: `"Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/File Templates/Source/"`. and add `ViperModule.xctemplate` to the directory.
 
-
-Done. Now you can find viper module template in Xcode.
+Done. Now you can find viper module template in Xcode.<br>
 Congratulations!  🎉🎉
 
 ## Template Usage
 
 ![Usage](assets/ViperModuleUsage.gif)
 
-## License
-** Xcode Template Helper ** is under the MIT license. See [LICENSE](LICENSE) for details.
+### Contributing
+
+Issues, Pull Requests and adding your custom template are welcome.
+
+### License
+
+**Xcode Template Helper** is under the MIT license. See [LICENSE](LICENSE) for details.
