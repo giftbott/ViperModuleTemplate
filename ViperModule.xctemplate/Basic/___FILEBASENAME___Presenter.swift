@@ -8,6 +8,11 @@
 
 import Foundation
 
+protocol ___FILEBASENAMEASIDENTIFIER___PresenterProtocol: class {
+  // View -> Presenter
+  func onViewDidLoad()
+}
+
 final class ___FILEBASENAMEASIDENTIFIER___Presenter {
   weak var view: ___FILEBASENAMEASIDENTIFIER___ViewProtocol!
   let wireframe: ___FILEBASENAMEASIDENTIFIER___WireframeProtocol
@@ -19,7 +24,8 @@ final class ___FILEBASENAMEASIDENTIFIER___Presenter {
   }
 }
 
-//MARK: PresenterProtocol
+// MARK: - PresenterProtocol
+
 extension ___FILEBASENAMEASIDENTIFIER___Presenter: ___FILEBASENAMEASIDENTIFIER___PresenterProtocol {
   func onViewDidLoad() {
     

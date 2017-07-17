@@ -8,12 +8,18 @@
 
 import Foundation
 
+protocol ___FILEBASENAMEASIDENTIFIER___InteractorInputProtocol: class {
+  // Presenter -> Interactor
+}
+
 final class ___FILEBASENAMEASIDENTIFIER___Interactor {
   weak var presenter: ___FILEBASENAMEASIDENTIFIER___InteractorOutputProtocol!
   
 }
 
-//MARK: InteractorInputProtocol
+// MARK: - InteractorInputProtocol
+
 extension ___FILEBASENAMEASIDENTIFIER___Interactor: ___FILEBASENAMEASIDENTIFIER___InteractorInputProtocol {
 	
 }
+

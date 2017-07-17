@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ___FILEBASENAMEASIDENTIFIER___ViewProtocol: class {
+  // Presenter -> View
+}
+
 final class ___FILEBASENAMEASIDENTIFIER___ViewController: UIViewController {
   var presenter: ___FILEBASENAMEASIDENTIFIER___PresenterProtocol!
 
@@ -18,7 +22,8 @@ final class ___FILEBASENAMEASIDENTIFIER___ViewController: UIViewController {
   }
 }
 
-//MARK: ViewProtocol
+// MARK: - ViewProtocol
+
 extension ___FILEBASENAMEASIDENTIFIER___ViewController: ___FILEBASENAMEASIDENTIFIER___ViewProtocol {
 
 }

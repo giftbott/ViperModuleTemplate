@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ___FILEBASENAMEASIDENTIFIER___WireframeProtocol: class {
+  // Presenter -> Wireframe
+}
+
 final class ___FILEBASENAMEASIDENTIFIER___Wireframe {
   weak var view: ___FILEBASENAMEASIDENTIFIER___ViewController!
   
@@ -27,6 +31,8 @@ final class ___FILEBASENAMEASIDENTIFIER___Wireframe {
   }
 }
 
-//MARK: WireframeProtocol
+// MARK: - WireframeProtocol
+
 extension ___FILEBASENAMEASIDENTIFIER___Wireframe: ___FILEBASENAMEASIDENTIFIER___WireframeProtocol {
+
 }

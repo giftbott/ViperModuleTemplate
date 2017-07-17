@@ -8,12 +8,17 @@
 
 import Foundation
 
+protocol ___FILEBASENAMEASIDENTIFIER___DataManagerInputProtocol: class {
+  // Interactor -> DataManager
+}
+
 final class ___FILEBASENAMEASIDENTIFIER___DataManager {
   weak var requestHandler: ___FILEBASENAMEASIDENTIFIER___DataManagerOutputProtocol!
 
 }
 
-//MARK: DataManagerInputProtocol
+// MARK: - DataManagerInputProtocol
+
 extension ___FILEBASENAMEASIDENTIFIER___DataManager: ___FILEBASENAMEASIDENTIFIER___DataManagerInputProtocol {
   
 }

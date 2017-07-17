@@ -8,6 +8,14 @@
 
 import Foundation
 
+protocol ___FILEBASENAMEASIDENTIFIER___InteractorInputProtocol: class {
+  // Presenter -> Interactor
+}
+
+protocol ___FILEBASENAMEASIDENTIFIER___DataManagerOutputProtocol: class {
+  // DataManager -> Interactor
+}
+
 final class ___FILEBASENAMEASIDENTIFIER___Interactor {
   weak var presenter: ___FILEBASENAMEASIDENTIFIER___InteractorOutputProtocol!
   let dataManager: ___FILEBASENAMEASIDENTIFIER___DataManagerInputProtocol
@@ -17,13 +25,14 @@ final class ___FILEBASENAMEASIDENTIFIER___Interactor {
   }
 }
 
+// MARK: - InteractorInputProtocol
 
-//MARK: InteractorInputProtocol
 extension ___FILEBASENAMEASIDENTIFIER___Interactor: ___FILEBASENAMEASIDENTIFIER___InteractorInputProtocol {
 	
 }
 
-//MARK: DataManagerOutputProtocol
+// MARK: - DataManagerOutputProtocol
+
 extension ___FILEBASENAMEASIDENTIFIER___Interactor: ___FILEBASENAMEASIDENTIFIER___DataManagerOutputProtocol {
 
 }
