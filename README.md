@@ -38,8 +38,6 @@ sudo swift install_template.swift
 mkdir -p $HOME"/Library/Developer/Xcode/Templates/File Templates/Custom/ViperModule.xctemplate/" && \
 cp -R ./ViperModule.xctemplate $HOME"/Library/Developer/Xcode/Templates/File Templates/Custom/"
 ```
-copy & paste<br>
-or copy `ViperModule.xctemplate` manually to `$HOME"/Library/Developer/Xcode/Templates/File Templates/Custom"` Directory (File Templates/Custom directory may not exist. It's default)
 
 - to install in `Xcode Application Path` 
 ```shell
@@ -47,8 +45,6 @@ tempDir=`xcode-select -p`"/Platforms/iPhoneOS.platform/Developer/Library/Xcode/T
 sudo mkdir -p $tempDir/ViperModule.xctemplate/ && \
 sudo cp -R ./ViperModule.xctemplate $tempDir
 ```
-or<br>
-Go to Application directory, select 'Show Package Contents' menu of Xcode application icon. Then browse to: `"Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/File Templates/Source/"`. and add `ViperModule.xctemplate` to the directory.
 
 Done. Now you can find viper module template in Xcode.<br>
 Congratulations!  🎉🎉
