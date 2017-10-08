@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol ___FILEBASENAMEASIDENTIFIER___ViewProtocol: class {
+protocol ___VARIABLE_viperModuleName___ViewProtocol: class {
   // Presenter -> View
 }
 
-final class ___FILEBASENAMEASIDENTIFIER___ViewController: UIViewController {
-  var presenter: ___FILEBASENAMEASIDENTIFIER___PresenterProtocol!
+final class ___VARIABLE_viperModuleName___ViewController: UIViewController {
+  var presenter: ___VARIABLE_viperModuleName___PresenterProtocol!
 
   // View LifeCycle
   override func viewDidLoad() {
@@ -24,6 +24,6 @@ final class ___FILEBASENAMEASIDENTIFIER___ViewController: UIViewController {
 
 // MARK: - ViewProtocol
 
-extension ___FILEBASENAMEASIDENTIFIER___ViewController: ___FILEBASENAMEASIDENTIFIER___ViewProtocol {
+extension ___VARIABLE_viperModuleName___ViewController: ___VARIABLE_viperModuleName___ViewProtocol {
 
 }
