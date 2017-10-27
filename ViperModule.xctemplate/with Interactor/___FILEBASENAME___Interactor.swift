@@ -15,14 +15,12 @@ protocol ___VARIABLE_viperModuleName___InteractorInputProtocol: class {
 
 // MARK: - Class Implementation
 
-final class ___VARIABLE_viperModuleName___Interactor {
+final class ___VARIABLE_viperModuleName___Interactor: ___VARIABLE_viperModuleName___InteractorInputProtocol {
   
   // MARK: Properties
   
   weak var presenter: ___VARIABLE_viperModuleName___InteractorOutputProtocol!
   
-  // MARK: Input
-  
-  // MARK: Output
+  // MARK:
   
 }
